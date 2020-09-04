@@ -7,14 +7,17 @@ module.exports.ThemeConfiguration = class DataCenter{
     static syncAll(){
         let data = {};
         themeElements.forEach(element => {
-           data[element] = this._getData(element);
+            let requestData =  this._getData(element);
+            if(requestData !== null){
+                data[element] = this._getData(element);
+            }
         });
+        let sdata = JSON.stringify(data);
 
-        if(Object.keys(data).length >= 0){
-            let sdata = JSON.stringify(data);
-            this.toFile(sdata);
+        if(Object.keys(data).length > 0){
             this.syncImage(sdata);
         }
+        this.toFile(sdata);
     }
 
     static _getData(type){
@@ -22,7 +25,7 @@ module.exports.ThemeConfiguration = class DataCenter{
         let apiUrl = process.env.ROOT_API;
         request.open('GET',apiUrl + type, false);
         request.send(null);
-        return request.status === 200 ? JSON.parse(request.responseText) : {error:request.status};
+        return request.status === 200 ? JSON.parse(request.responseText) : null;
     }
 
     static toFile(data){
