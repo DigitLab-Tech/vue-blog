@@ -9,9 +9,12 @@ module.exports.ThemeConfiguration = class DataCenter{
         themeElements.forEach(element => {
            data[element] = this._getData(element);
         });
-        let sdata = JSON.stringify(data);
-        this.toFile(sdata);
-        this.syncImage(sdata);
+
+        if(Object.keys(data).length >= 0){
+            let sdata = JSON.stringify(data);
+            this.toFile(sdata);
+            this.syncImage(sdata);
+        }
     }
 
     static _getData(type){
