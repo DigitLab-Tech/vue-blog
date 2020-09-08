@@ -1,8 +1,8 @@
+var WebpackBeforeBuildPlugin = require('before-build-webpack');
 const PrerenderSpaPlugin = require('prerender-spa-plugin');
-const ThemeSynchronizer = require('./ThemeSychronizer').ThemeConfiguration;
+const ThemeSynchronizer = require('./ThemeSynchronizer/ThemeSychronizer').ThemeSynchronizer;
 
 let path = require('path');
-ThemeSynchronizer.syncAll();
 
 module.exports = {
     configureWebpack: config => {
@@ -13,12 +13,17 @@ module.exports = {
                     App: path.resolve(__dirname, 'src', 'app')
                     }},
                 plugins: [
+                    new WebpackBeforeBuildPlugin((stats, callback) => {
+                        ThemeSynchronizer.syncAll().then(() => {
+                            callback();
+                        });
+                    }),
                     new PrerenderSpaPlugin(
                         // Absolute path to compiled SPA
                         path.resolve(__dirname, 'dist'),
                         // List of routes to prerender
                         ['/'],
-                    ),
+                    )
                 ]
             }
         } else {
