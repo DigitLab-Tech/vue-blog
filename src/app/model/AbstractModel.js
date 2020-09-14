@@ -1,15 +1,22 @@
 export default class AbstractModel{
    constructor(data){
         this.data = data;
-        this._constructor();
-        this._init();
+       /* this._constructor();
+        this._init();*/
     }
 
-    _constructor(){
-        throw new Error('Abstract method not implemented');
+    get(key){
+        if(Object.prototype.hasOwnProperty.call(this.data, key)){
+            return this.data[key];
+        }
+        return Object.prototype.hasOwnProperty.call(this.data, key) ? this.data[key] : null;
+    }
+
+    /*_constructor(){
+        console.log(new Error('Abstract method not implemented'));
     }
 
     _init(){
-        throw new Error('Abstract method not implemented');
-    }
+        console.log(new Error('Abstract method not implemented'));
+    }*/
 }

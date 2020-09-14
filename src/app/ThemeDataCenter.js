@@ -1,20 +1,24 @@
 import themeData from 'Public/themeData.json';
+import ContentfulDataExtractor from "App/DataExtractor/ContentfulDataExtractor";
 
 export default class ThemeDataCenter{
+    static _getDataExtractor(){
+        switch (process.env.VUE_APP_DATA_CENTER) {
+            case 'contentful':
+                return ContentfulDataExtractor;
+            case 'wordpress':
+                return null;
+            default:
+                return null;
+        }
+    }
+
     static get(section){
-        return themeData[section];
+        return this._getDataExtractor().getNormalizedData(themeData[section]);
     }
 
     static getConfig(){
-        let configs = themeData['config'];
-        let config = {};
-        for(let element of configs){
-            console.log(element);
-            if(element.slug === 'configuration-principal'){
-                config = element;
-                break;
-            }
-        }
-        return config;
+        let sectionKey = 'config';
+        return this._getDataExtractor().getNormalizedData(themeData[sectionKey])[0];
     }
 }

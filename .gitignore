@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+/public/themeData.json
+/public/themeAsset
 
 
 # local env files

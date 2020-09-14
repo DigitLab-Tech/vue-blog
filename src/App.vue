@@ -1,39 +1,41 @@
 <template>
-  <div id="app" :style="cssProps">
-    <Header :menu-data="headerData" />
-    test
+  <div id="app" :style="cssProps" >
+<Header :menu-data="header" />
   </div>
 </template>
 
 <script>
   import ThemeDataCenter from 'App/ThemeDataCenter';
+  import Config from 'App/model/Config';
   import Header from "./components/Header";
 
   export default {
     name: 'App',
     components: {
       Header
+
     },
 
     computed:{
       cssProps(){
         return{
-          '--bg-color': this.configs.bg_color,
-          '--main-color': this.configs.main_color,
-          '--second-color' : this.configs.second_color
+          '--bg-color': this.config.get('bgColor'),
+          '--main-color': this.config.get('mainColor'),
+          '--second-color' : this.config.get('secondColor'),
         }
       }
     },
 
     data(){
       return{
-        configs : ThemeDataCenter.getConfig(),
-        headerData: ThemeDataCenter.get('header')
+        config: new Config(ThemeDataCenter.getConfig()),
+        header: ThemeDataCenter.get('header')
       }
     },
 
     created(){
-      console.log(this.configs.bg_color);
+      console.log(this.config);
+      console.log(this.header);
     }
   }
 </script>
@@ -47,6 +49,8 @@
     justify-content: stretch;
     align-content: stretch;
     min-height:100vh;
+    width:100vw;
+    overflow-x: hidden;
   }
 
   #app {
@@ -56,5 +60,6 @@
     text-align: center;
     color: var(--main-color);
     background-color: var(--bg-color);
+    width: 100%;
   }
 </style>

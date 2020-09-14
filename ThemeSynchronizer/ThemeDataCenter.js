@@ -1,6 +1,7 @@
 module.exports.ThemeDataCenter = class ThemeDataCenter{
     constructor(){
-        this.themeElements = ['config', 'header', 'footer'];
+        this.configIndex = 'config';
+        this.themeElements = ['header', 'footer'];
         this._constructor();
     }
 
