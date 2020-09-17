@@ -1,41 +1,60 @@
 <template>
   <div id="app" :style="cssProps" >
-<Header :menu-data="header" />
+    <Header :header-data="headerData" />
+    <section v-for="section in sectionsData" :key="section.id">
+      <template v-if="section.name === 'À propos'">
+        <About :about-data="section" />
+      </template>
+      <template v-if="section.name === 'Services'">
+        <Services :services-data="section" />
+      </template>
+      <template v-if="section.name === 'Contact'">
+        <Contact :contact-data="section" />
+      </template>
+    </section>
+    <Footer :footer-data="footerData" />
   </div>
 </template>
 
 <script>
   import ThemeDataCenter from 'App/ThemeDataCenter';
-  import Config from 'App/model/Config';
   import Header from "./components/Header";
+  import Footer from "./components/Footer";
+  import About from "./components/About";
+  import Services from "./components/Services";
+  import Contact from "./components/Contact";
 
   export default {
     name: 'App',
     components: {
-      Header
-
+      Contact,
+      Services,
+      About,
+      Header,
+      Footer
     },
 
     computed:{
       cssProps(){
         return{
-          '--bg-color': this.config.get('bgColor'),
-          '--main-color': this.config.get('mainColor'),
-          '--second-color' : this.config.get('secondColor'),
+          '--bg-color': ThemeDataCenter.get('bgColor'),
+          '--main-color': ThemeDataCenter.get('mainColor'),
+          '--second-color' : ThemeDataCenter.get('secondaryColor'),
         }
-      }
+      },
     },
 
     data(){
       return{
-        config: new Config(ThemeDataCenter.getConfig()),
-        header: ThemeDataCenter.get('header')
+        headerData: ThemeDataCenter.get('header'),
+        footerData: ThemeDataCenter.get('footer'),
+        sectionsData: ThemeDataCenter.get('sections'),
+        fontData: ThemeDataCenter.get('mainFont')
       }
     },
 
     created(){
-      console.log(this.config);
-      console.log(this.header);
+      console.log(ThemeDataCenter.get('mainFont'));
     }
   }
 </script>
@@ -54,7 +73,7 @@
   }
 
   #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Montserrat-Regular, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

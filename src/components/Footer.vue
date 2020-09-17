@@ -1,16 +1,15 @@
 <template>
-    <header>
-        <h1>{{menuData}}</h1>
-    </header>
+    <footer>
+        <h1>{{footerData}}</h1>
+    </footer>
 </template>
 
 <script>
 
     export default {
-        name: 'Header',
+        name: 'Footer',
         props:{
-            logo:Object,
-            menuData:Object
+            footerData:Object
         }
     }
 </script>

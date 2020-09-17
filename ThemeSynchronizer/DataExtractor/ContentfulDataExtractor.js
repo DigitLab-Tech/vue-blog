@@ -1,5 +1,5 @@
 module.exports.ContentfulDataExtractor = class ContentfulDataExtractor{
-    static indexToRemove = ['total','skip', 'limit', 'space', 'environment', 'revision', 'locale', 'sections', 'marks', 'data', 'includes'];
+    static indexToRemove = ['total','skip', 'limit', 'space', 'environment', 'revision', 'locale', 'marks', 'data', 'includes'];
     static indexToRegress = ['sys', 'fields'];
     static itemIndex = 'items';
 

@@ -7,7 +7,7 @@ module.exports.ThemeAssetExtractor = class ThemeAssetExtractor{
             return
         }
 
-        return this._addMissingHttp(this._removeDouble(data.match(/(?=(https?|\/\/))([^"]*\.(png|jpe?g|ico|gif|ttf))/gi)));
+        return this._addMissingHttp(this._removeDouble(data.match(/(?=(https?|\/\/))([^"]*\/((logo\.(png|jpg))|.*?\.(ttf|ico)))/gi)));
     }
 
     _removeDouble(urls){
