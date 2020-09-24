@@ -1,5 +1,5 @@
 <template>
-    <h1>{{contactData}}</h1>
+    <p>{{contactData}}</p>
 </template>
 
 <script>

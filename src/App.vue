@@ -1,7 +1,10 @@
 <template>
-  <div id="app" :style="cssProps" >
+  <div id="app">
     <Header :header-data="headerData" />
-    <section v-for="section in sectionsData" :key="section.id">
+    <section v-for="section in sectionsData" :key="section.id" :id="section.name">
+      <template v-if="section.name === 'Intro'">
+        <Intro :intro-data="section" />
+      </template>
       <template v-if="section.name === 'À propos'">
         <About :about-data="section" />
       </template>
@@ -23,6 +26,7 @@
   import About from "./components/About";
   import Services from "./components/Services";
   import Contact from "./components/Contact";
+  import Intro from "./components/Intro";
 
   export default {
     name: 'App',
@@ -31,30 +35,20 @@
       Services,
       About,
       Header,
-      Footer
-    },
-
-    computed:{
-      cssProps(){
-        return{
-          '--bg-color': ThemeDataCenter.get('bgColor'),
-          '--main-color': ThemeDataCenter.get('mainColor'),
-          '--second-color' : ThemeDataCenter.get('secondaryColor'),
-        }
-      },
+      Footer,
+      Intro
     },
 
     data(){
       return{
         headerData: ThemeDataCenter.get('header'),
         footerData: ThemeDataCenter.get('footer'),
-        sectionsData: ThemeDataCenter.get('sections'),
-        fontData: ThemeDataCenter.get('mainFont')
+        sectionsData: ThemeDataCenter.get('sections')
       }
     },
 
     created(){
-      console.log(ThemeDataCenter.get('mainFont'));
+
     }
   }
 </script>
@@ -72,13 +66,53 @@
     overflow-x: hidden;
   }
 
-  #app {
-    font-family: Montserrat-Regular, Helvetica, Arial, sans-serif;
+  #app{
+    font-family: var(--main-font), Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: var(--main-color);
     background-color: var(--bg-color);
     width: 100%;
+    min-height: 1200px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:10rem;
+  }
+
+  #app h1{
+    font-family: var(--main-font);
+    font-weight: 900;
+    font-size: 3rem;
+  }
+
+  section{
+    overflow: hidden;
+  }
+
+  a{
+    font-family: var(--main-font);
+    text-decoration: none;
+  }
+
+  a.cta-style-1:after{
+    content:'';
+    height:18px;
+    border: 1px solid var(--main-color);
+    margin-top: 4px;
+    display: block;
+  }
+
+  a.cta-style-1{
+    font-weight: 100;
+    font-size: 1rem;
+    color:var(--main-color);
+    text-transform: uppercase;
+    display: inline-grid;
+    text-align: left;
+  }
+
+  .flex{
+    display: flex;
   }
 </style>

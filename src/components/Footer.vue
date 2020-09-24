@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <h1>{{footerData}}</h1>
+        <p>{{footerData}}</p>
     </footer>
 </template>
 

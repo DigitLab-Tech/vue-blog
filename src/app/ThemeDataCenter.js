@@ -1,4 +1,4 @@
-import themeData from '../initialData.json';
+import themeData from '../configs.json';
 export default class ThemeDataCenter{
 
     static get(config){

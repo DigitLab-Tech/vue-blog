@@ -10,7 +10,8 @@ module.exports = {
             return {
                 resolve: {alias: {
                     Public: path.resolve(__dirname, 'public'),
-                    App: path.resolve(__dirname, 'src', 'app')
+                    App: path.resolve(__dirname, 'src', 'app'),
+                    Assets: path.resolve(__dirname, 'src', 'assets'),
                     }},
                 plugins: [
                     new WebpackBeforeBuildPlugin((stats, callback) => {
@@ -30,7 +31,8 @@ module.exports = {
             return{
                 resolve: {alias: {
                         Public: path.resolve(__dirname, 'public'),
-                        App: path.resolve(__dirname, 'src','app')
+                        App: path.resolve(__dirname, 'src','app'),
+                        Assets: path.resolve(__dirname, 'src', 'assets'),
                     }},
             };
         }

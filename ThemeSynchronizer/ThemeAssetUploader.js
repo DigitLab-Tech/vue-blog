@@ -30,11 +30,8 @@ module.exports.ThemeAssetUploader = class ThemeAssetUploader{
                         let fontName = splitName[0].split('-')[0];
                         path += '/fonts/' + fontName + '/';
                     }
-                    else if(splitName[1] === 'ico'){
-                        path = 'public/';
-                    }
                     else{
-                        path += '/';
+                        path = 'public/';
                     }
                 }
                 this._writeFile(path, fileName, fileData);
