@@ -91,7 +91,6 @@
 
     .text-container{
         width:100%;
-        text-align: left;
         padding-left: 3rem;
         display: flex;
         flex-direction: column;

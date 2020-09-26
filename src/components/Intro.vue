@@ -92,7 +92,6 @@
         display: flex;
         flex-direction: column;
         grid-column: slogan;
-        text-align: left;
         align-self: stretch;
         justify-content: center;
         transform: translateX(125px);
@@ -117,7 +116,6 @@
     .to-service-container{
         display: flex;
         flex-direction: column;
-        text-align: left;
         align-self: flex-start;
         transform: translateY(75px);
         transform: translateY(75px);
@@ -126,7 +124,6 @@
     .to-realisation-container{
         display: flex;
         flex-direction: column;
-        text-align: left;
     }
 
     .to-service-container a{
@@ -177,7 +174,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        text-align: left;
     }
 
     .text-container{

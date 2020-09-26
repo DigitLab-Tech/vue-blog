@@ -67,7 +67,6 @@
     }
 
     .logo-desc{
-        text-align: left;
         transform: translateX(-3px);
     }
 </style>

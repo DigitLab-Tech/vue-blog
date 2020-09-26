@@ -12,6 +12,7 @@
     "before-build-webpack": "^0.2.9",
     "contentful": "^7.14.6",
     "core-js": "^3.6.5",
+    "emailjs": "^3.3.0",
     "generate-json-webpack-plugin": "^1.0.0",
     "http": "0.0.1-security",
     "prerender-spa-plugin": "^3.4.0",

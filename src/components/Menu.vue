@@ -32,7 +32,7 @@ export default {
   computed: {
     menuCssClass: function(){
       return this.isMenuActive ? 'active' : '';
-    }
+    },
   }
 }
 </script>

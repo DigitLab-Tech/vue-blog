@@ -62,7 +62,6 @@
     justify-content: stretch;
     align-content: stretch;
     min-height:100vh;
-    width:100vw;
     overflow-x: hidden;
   }
 
@@ -70,7 +69,7 @@
     font-family: var(--main-font), Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: left;
     color: var(--main-color);
     background-color: var(--bg-color);
     width: 100%;
@@ -84,6 +83,24 @@
     font-family: var(--main-font);
     font-weight: 900;
     font-size: 3rem;
+    color: var(--main-color);
+    z-index: 500;
+  }
+
+  #app h3{
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 0;
+    line-height: 3rem;
+  }
+
+  body p{
+    font-family: var(--main-font);
+    font-weight: 400;
+    color: var(--main-color);
+    letter-spacing: 0.05rem;
   }
 
   section{
@@ -109,7 +126,6 @@
     color:var(--main-color);
     text-transform: uppercase;
     display: inline-grid;
-    text-align: left;
   }
 
   .flex{
