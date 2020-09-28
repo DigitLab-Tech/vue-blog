@@ -10,7 +10,7 @@
                     </svg>
                 </div>
             </div>
-            <img :src="section.getImageData('girl taking notes').url" />
+            <img :src="section.getImageData('girl taking notes').url" draggable="false" />
         </div>
         <div class="text-container">
             <p v-html="section.getTextContent('à propos - contenu principal')"></p>

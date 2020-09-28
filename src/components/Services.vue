@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="image-container">
-                <img :src="section.getImageData('cuisine').url" />
+                <img :src="section.getImageData('cuisine').url" draggable="false" />
             </div>
         </div>
     </div>

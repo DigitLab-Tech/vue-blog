@@ -12,7 +12,7 @@
             <Form :form-data="section.getContent('contact')" />
         </div>
         <div class="image-container">
-            <img :src="section.getImageData('salon').url" />
+            <img :src="section.getImageData('salon').url" draggable="false"/>
         </div>
     </div>
 </template>

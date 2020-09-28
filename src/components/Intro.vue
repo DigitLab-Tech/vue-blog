@@ -4,7 +4,7 @@
             <div class="slogan-wrapper">
                 <h1>{{section.getTextContent('slogan')}}</h1>
                 <div class="to-service-container">
-                    <a :href="section.getCta('intro to service').url" v-html="section.getCta('intro to service').label"></a>
+                    <a class="cta-style-1" :href="section.getCta('intro - services').url" v-html="section.getCta('intro - services').label"></a>
                 </div>
             </div>
 
@@ -101,24 +101,10 @@
         flex-direction: column;
     }
 
-    .to-service-container a{
-        font-weight: 100;
-        font-size: 1rem;
-        color:var(--main-color);
-        text-transform: uppercase;
-    }
-
     .to-realisation-container a{
         font-weight: 300;
         font-size: 1.2rem;
         color:var(--bg-color);
-    }
-
-    .to-service-container:after{
-        content:'';
-        height:18px;
-        border: 1px solid var(--main-color);
-        margin-top: 4px;
     }
 
     .to-realisation-container:after{

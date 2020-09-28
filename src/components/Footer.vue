@@ -13,20 +13,20 @@
         </div>
 
         <div class="logo-container">
-            <a href="/" >
+            <a href="#intro" draggable="false">
                 <div class="svg-wrapper">
                     <svg width="16" height="137" viewBox="0 0 16 137" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.70711 0.292892C8.31658 -0.0976257 7.68342 -0.0976257 7.29289 0.292892L0.928932 6.65686C0.538408 7.04738 0.538408 7.68054 0.928932 8.07108C1.31946 8.46159 1.95262 8.46159 2.34315 8.07108L8 2.41422L13.6569 8.07108C14.0474 8.46159 14.6805 8.46159 15.0711 8.07108C15.4616 7.68054 15.4616 7.04738 15.0711 6.65686L8.70711 0.292892ZM9 137L9 1H7L7 137H9Z" fill="#FCF5F5"/>
                     </svg>
                 </div>
-                <img :src="logoUrl" />
+                <img :src="logoUrl" draggable="false"/>
             </a>
         </div>
 
         <div class="social-container">
             <p>Suivez-moi</p>
             <a class="image-wrapper" v-for="social in data.socials" :key="social.name" :href="social.url" target="_blank">
-                <img :src="social.icon.file.url" />
+                <img :src="social.icon.file.url" draggable="false"/>
             </a>
         </div>
     </footer>

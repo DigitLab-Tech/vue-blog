@@ -2,7 +2,7 @@
     <header>
         <div class="logo-container" >
             <div class="logo-wrapper">
-                <img :src="logo.path" />
+                <img :src="logo.path" draggable="false"/>
                 <div class="div logo-desc">
                     <span v-html="logo.desc"></span>
                 </div>

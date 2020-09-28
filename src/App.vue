@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="grid column-1">
     <Header :header-data="headerData" />
     <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
       <template v-if="section.getId() === 'intro'">
@@ -69,41 +69,36 @@
 
 <!--suppress CssUnresolvedCustomProperty -->
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
   body{
     margin: 0;
     display: flex;
     justify-content: stretch;
-    align-content: stretch;
+    align-items: stretch;
     overflow-x: hidden;
-    z-index: -1;
+    text-align: left;
   }
 
   section{
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
-  #app{
-    font-family: var(--main-font), Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: left;
-    color: var(--main-color);
-    background-color: var(--bg-color);
-    width: 100%;
-    min-height: 1200px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap:10rem;
+  img {
+    user-select: none;
   }
 
-  #app h1{
+
+  h1{
     font-family: var(--main-font);
     font-weight: 900;
     font-size: 3rem;
     color: var(--main-color);
   }
 
-  #app h3{
+  h3{
     font-family: var(--main-font);
     font-weight: 400;
     font-size: 2rem;
@@ -112,7 +107,7 @@
     line-height: 3rem;
   }
 
-  body p{
+  p{
     font-family: var(--main-font);
     font-weight: 400;
     color: var(--main-color);
@@ -122,6 +117,16 @@
   a{
     font-family: var(--main-font);
     text-decoration: none;
+  }
+
+  #app{
+    gap:10rem;
+    font-family: var(--main-font), Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--main-color);
+    background-color: var(--bg-color);
+    width: 100%;
   }
 
   a.cta-style-1:after{
@@ -140,7 +145,15 @@
     display: inline-grid;
   }
 
-  .flex{
-    display: flex;
+  @media (max-width: 576px){
+
+  }
+
+  @media (max-width: 991px){
+
+  }
+
+  @media (min-width: 1280px){
+
   }
 </style>
