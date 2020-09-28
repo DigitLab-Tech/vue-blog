@@ -2,9 +2,9 @@
     <div class="intro-container">
         <div class="slogan-container">
             <div class="slogan-wrapper">
-                <h1>{{slogan}}</h1>
+                <h1>{{section.getTextContent('slogan')}}</h1>
                 <div class="to-service-container">
-                    <a :href="toServicesCta.url" v-html="toServicesCta.label"></a>
+                    <a :href="section.getCta('intro to service').url" v-html="section.getCta('intro to service').label"></a>
                 </div>
             </div>
 
@@ -18,9 +18,9 @@
         <div class="image-footer-container">
             <div class="text-container">
                 <div class="wrapper">
-                    <h2 v-html="imageDesc"></h2>
+                    <h2 v-html="section.getTextContent('description image introduction')"></h2>
                     <div class="to-realisation-container">
-                        <a :href="toRealisationCta.url" v-html="toRealisationCta.label"></a>
+                        <a :href="section.getCta('intro to realisation').url" v-html="section.getCta('intro to realisation').label"></a>
                     </div>
                 </div>
             </div>
@@ -41,42 +41,17 @@
     export default {
         name: 'Intro',
         props:{
-            introData:Object
+            sectionClass:Object
         },
         data(){
           return{
-              data: this.introData,
+              section: this.sectionClass,
           }
         },
         computed: {
-            slogan: function () {
-                return this.data.textContents.find((element) => {
-                    return element.name.toLowerCase() === 'slogan';
-                }).content.content[0].content[0].value
-            },
-            imageDesc: function(){
-                return this.data.textContents.find((element) => {
-                    return element.name.toLowerCase() === 'description image introduction';
-                }).content.content[0].content[0].value
-            },
-            imageUrl: function(){
-                return this.data.images.find((element) => {
-                    return element.title.toLowerCase() === 'intro';
-                }).file.url;
-            },
-            toServicesCta: function() {
-                return this.data.ctas.find((element) => {
-                   return element.name.toLowerCase() === 'intro to service';
-                });
-            },
-            toRealisationCta:function(){
-                return this.data.ctas.find((element) => {
-                    return element.name.toLowerCase() === 'intro to realisation';
-                });
-            },
-            imageContainerCss: function(){
-                return 'background-image: url("'+ this.imageUrl +'")';
-            }
+           imageContainerCss: function(){
+                return 'background-image: url("'+ this.section.getImageData('intro').url +'")';
+           }
         }
     }
 </script>

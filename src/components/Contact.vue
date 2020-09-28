@@ -2,17 +2,17 @@
     <div class="contact-container">
         <div class="info-container">
             <div class="content-container">
-                <p v-html="info"></p>
+                <p v-html="section.getTextContent('informations de contact')"></p>
             </div>
             <div class="title-container">
-                <h1>{{data.title}}</h1>
+                <h1>{{section.getTitle()}}</h1>
             </div>
         </div>
         <div class="form-container">
-            <Form :form-data="formData" />
+            <Form :form-data="section.getContent('contact')" />
         </div>
         <div class="image-container">
-            <img :src="imageUrl" />
+            <img :src="section.getImageData('salon').url" />
         </div>
     </div>
 </template>
@@ -26,36 +26,13 @@
           Form
         },
         props:{
-            contactData:Object
+            sectionClass:Object
         },
         data(){
             return{
-                data:this.contactData
+                section:this.sectionClass
             }
         },
-
-        computed: {
-            imageUrl: function () {
-                return this.data.images.find((element) => {
-                    return element.title.toLowerCase() === 'salon';
-                }).file.url;
-            },
-
-            info: function(){
-                return this.data.textContents.find((element) => {
-                    return element.name.toLowerCase() === "informations de contact";
-                }).content.content[0].content[0].value;
-            },
-
-            formData: function(){
-              return this.data.contents.find(element => {
-                return element.name.toLowerCase() === 'contact';
-              });
-            }
-        },
-        mounted() {
-            console.log(this.data);
-        }
     }
 </script>
 

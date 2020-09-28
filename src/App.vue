@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <Header :header-data="headerData" />
-    <section v-for="section in sectionsData" :key="section.id" :id="section.name">
-      <template v-if="section.name === 'Intro'">
-        <Intro :intro-data="section" />
+    <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
+      <template v-if="section.getId() === 'intro'">
+        <Intro :section-class="section" />
       </template>
-      <template v-if="section.name === 'À propos'">
-        <About :about-data="section" />
+      <template v-if="section.getId() === 'apropos'">
+        <About :section-class="section" />
       </template>
-      <template v-if="section.name === 'Services'">
-        <Services :services-data="section" />
+      <template v-if="section.getId() === 'services'">
+        <Services :section-class="section" />
       </template>
-      <template v-if="section.name === 'Contact'">
-        <Contact :contact-data="section" />
+      <template v-if="section.getId() === 'contact'">
+        <Contact :section-class="section" />
       </template>
     </section>
     <Footer :footer-data="footerData" />
@@ -21,6 +21,7 @@
 
 <script>
   import ThemeDataCenter from 'App/ThemeDataCenter';
+  import Section from 'App/model/Section';
   import Header from "./components/Header";
   import Footer from "./components/Footer";
   import About from "./components/About";
@@ -43,7 +44,20 @@
       return{
         headerData: ThemeDataCenter.get('header'),
         footerData: ThemeDataCenter.get('footer'),
-        sectionsData: ThemeDataCenter.get('sections')
+        sections: this.initSections()
+      }
+    },
+
+    methods:{
+      initSections(){
+        let sections = [];
+        let data = ThemeDataCenter.get('sections');
+
+        data.forEach(section =>{
+          sections.push(new Section(section));
+        });
+
+        return sections;
       }
     },
 
@@ -56,12 +70,15 @@
 <!--suppress CssUnresolvedCustomProperty -->
 <style>
   body{
-    background-color: var(--bg-color);
     margin: 0;
     display: flex;
     justify-content: stretch;
     align-content: stretch;
-    min-height:100vh;
+    overflow-x: hidden;
+    z-index: -1;
+  }
+
+  section{
     overflow-x: hidden;
   }
 
@@ -84,7 +101,6 @@
     font-weight: 900;
     font-size: 3rem;
     color: var(--main-color);
-    z-index: 500;
   }
 
   #app h3{
@@ -101,10 +117,6 @@
     font-weight: 400;
     color: var(--main-color);
     letter-spacing: 0.05rem;
-  }
-
-  section{
-    overflow: hidden;
   }
 
   a{

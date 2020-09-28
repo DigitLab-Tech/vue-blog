@@ -15,18 +15,18 @@
                     </div>
                 </div>
                 <div class="to-contact-cta">
-                    <a class="cta-style-1" :href="toContactCta.url" >{{toContactCta.label}}</a>
+                    <a class="cta-style-1" :href="section.getCta('service - contact').url" >{{section.getCta('service - contact').label}}</a>
                 </div>
             </div>
         </div>
         <div class="right-column">
             <div class="title-container">
                 <div class="title-wrapper">
-                    <h1>{{data.title}}</h1>
+                    <h1>{{section.getTitle()}}</h1>
                 </div>
             </div>
             <div class="image-container">
-                <img :src="imageUrl" />
+                <img :src="section.getImageData('cuisine').url" />
             </div>
         </div>
     </div>
@@ -37,11 +37,11 @@
     export default {
         name: 'Services',
         props:{
-            servicesData:Object
+            sectionClass:Object
         },
         data(){
             return{
-                data: this.servicesData
+                section: this.sectionClass
             }
         },
         computed:{
@@ -52,18 +52,12 @@
             },
 
             servicesLeft: function(){
-                return this.data.contents.slice(0, this.data.contents.length / 2)
+                return this.section.getContents().slice(0, this.section.getContents().length / 2)
             },
 
             servicesRight: function(){
-                return this.data.contents.slice(this.data.contents.length / 2)
-            },
-
-            toContactCta: function() {
-                return this.data.ctas.find((element) => {
-                    return element.name.toLowerCase() === 'service - contact';
-                });
-            },
+                return this.section.getContents().slice(this.section.getContents().length / 2)
+            }
         }
     }
 </script>

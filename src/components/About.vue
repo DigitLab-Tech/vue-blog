@@ -2,7 +2,7 @@
     <div class="about-container">
         <div class="image-container">
             <div class="title-wrapper">
-                <h1>{{data.title}}</h1>
+                <h1>{{section.getTitle()}}</h1>
                 <div class="svg-wrapper">
                     <svg width="97" height="83" viewBox="0 0 97 83" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M88.2929 82.7071C88.6834 83.0976 89.3166 83.0976 89.7071 82.7071L96.0711 76.3431C96.4616 75.9526 96.4616 75.3195 96.0711 74.9289C95.6805 74.5384 95.0474 74.5384 94.6569 74.9289L89 80.5858L83.3431 74.9289C82.9526 74.5384 82.3195 74.5384 81.9289 74.9289C81.5384 75.3195 81.5384 75.9526 81.9289 76.3431L88.2929 82.7071ZM88 1L88 82L90 82L90 1L88 1Z" fill="#FCF5F5"/>
@@ -10,11 +10,11 @@
                     </svg>
                 </div>
             </div>
-            <img :src="imageUrl" />
+            <img :src="section.getImageData('girl taking notes').url" />
         </div>
         <div class="text-container">
-            <p v-html="mainContent"></p>
-            <a class="cta-style-1" :href="toContactCta.url" v-html="toContactCta.label"></a>
+            <p v-html="section.getTextContent('à propos - contenu principal')"></p>
+            <a class="cta-style-1" :href="section.getCta('about - contact').url" v-html="section.getCta('about - contact').label"></a>
         </div>
     </div>
 </template>
@@ -24,31 +24,12 @@
     export default {
         name: 'About',
         props:{
-            aboutData:Object
+            sectionClass:Object
         },
         data(){
             return{
-                data: this.aboutData
+                section: this.sectionClass
             }
-        },
-        computed:{
-            imageUrl: function(){
-                return this.data.images.find((element) => {
-                    return element.title.toLowerCase() === 'girl taking notes';
-                }).file.url;
-            },
-
-            mainContent: function(){
-                return this.data.textContents.find((element) => {
-                    return element.name.toLowerCase() === 'à propos - contenu principal';
-                }).content.content[0].content[0].value
-            },
-
-            toContactCta: function() {
-                return this.data.ctas.find((element) => {
-                    return element.name.toLowerCase() === 'about - contact';
-                });
-            },
         }
     }
 </script>
