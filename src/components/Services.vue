@@ -72,7 +72,6 @@
     .services-container{
         display: flex;
         justify-content: space-between;
-
     }
 
     .services-container > .left-column,
