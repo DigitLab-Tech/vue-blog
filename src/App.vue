@@ -88,50 +88,15 @@
 
   img {
     user-select: none;
-    width:100%;
   }
-
-
-  h1{
-    font-family: var(--main-font);
-    font-weight: 900;
-    font-size: calc(2rem + 1vw);
-    color: var(--main-color);
-    margin: 0;
-  }
-
-  h3{
-    font-family: var(--main-font);
-    font-weight: 400;
-    font-size: calc(1rem + 1vw);
-    color: var(--main-color);
-    margin: 0;
-    line-height: 3rem;
-  }
-
-  p{
-    font-family: var(--main-font);
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 3rem;
-    letter-spacing: 0.2rem;
-  }
-
-  a{
-    font-family: var(--main-font);
-    text-decoration: none;
-  }
-
-
 
   #app{
     gap:10rem;
+    background-color: var(--bg-color);
     font-family: var(--main-font), Helvetica, Arial, sans-serif;
+    color: var(--main-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: var(--main-color);
-    background-color: var(--bg-color);
-    width: 100%;
   }
 
   a.cta-style-1:after{
@@ -144,7 +109,6 @@
 
   a.cta-style-1{
     font-weight: 100;
-    font-size: 1rem;
     color:var(--main-color);
     text-transform: uppercase;
     display: inline-grid;

@@ -2,7 +2,7 @@
     <div class="intro-container">
         <div class="slogan-container">
             <div class="slogan-wrapper">
-                <h1>{{section.getTextContent('slogan')}}</h1>
+                <h1 v-html="section.getTextContent('slogan')"></h1>
                 <div class="to-service-container">
                     <a class="cta-style-1" :href="section.getCta('intro - services').url" v-html="section.getCta('intro - services').label"></a>
                 </div>
@@ -76,9 +76,13 @@
     .slogan-wrapper{
         height: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         flex-direction: column;
+    }
+
+    .slogan-wrapper h1{
+        font-size: 3rem;
     }
 
     .banner-container{

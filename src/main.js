@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import './assets/css/theme.css';
 import './assets/css/framework.css';
+import './assets/css/font-rules.css';
 
 Vue.config.productionTip = false;
 
