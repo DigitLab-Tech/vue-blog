@@ -70,3 +70,11 @@
 .grid.column-2{
     grid-template-columns: 1fr 1fr;
 }
+
+.grid > .left-column{
+    grid-column: 1/2;
+}
+
+.grid > .right-column{
+    grid-column: 2/3;
+}

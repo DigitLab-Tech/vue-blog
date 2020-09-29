@@ -88,20 +88,22 @@
 
   img {
     user-select: none;
+    width:100%;
   }
 
 
   h1{
     font-family: var(--main-font);
     font-weight: 900;
-    font-size: 3rem;
+    font-size: calc(2rem + 1vw);
     color: var(--main-color);
+    margin: 0;
   }
 
   h3{
     font-family: var(--main-font);
     font-weight: 400;
-    font-size: 2rem;
+    font-size: calc(1rem + 1vw);
     color: var(--main-color);
     margin: 0;
     line-height: 3rem;
@@ -109,15 +111,18 @@
 
   p{
     font-family: var(--main-font);
+    font-size: 2rem;
     font-weight: 400;
-    color: var(--main-color);
-    letter-spacing: 0.05rem;
+    line-height: 3rem;
+    letter-spacing: 0.2rem;
   }
 
   a{
     font-family: var(--main-font);
     text-decoration: none;
   }
+
+
 
   #app{
     gap:10rem;

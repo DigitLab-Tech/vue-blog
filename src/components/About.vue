@@ -1,7 +1,7 @@
 <template>
-    <div class="about-container">
-        <div class="image-container">
-            <div class="title-wrapper">
+    <div class="about-container grid">
+        <div class="left-column column">
+            <div class="title-wrapper row end vcenter">
                 <h1>{{section.getTitle()}}</h1>
                 <div class="svg-wrapper">
                     <svg width="97" height="83" viewBox="0 0 97 83" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,11 +10,15 @@
                     </svg>
                 </div>
             </div>
-            <img :src="section.getImageData('girl taking notes').url" draggable="false" />
+            <div class="image-wrapper">
+                <img :src="section.getImageData('girl taking notes').url" draggable="false" />
+            </div>
         </div>
-        <div class="text-container">
-            <p v-html="section.getTextContent('à propos - contenu principal')"></p>
-            <a class="cta-style-1" :href="section.getCta('about - contact').url" v-html="section.getCta('about - contact').label"></a>
+        <div class="right-column row vcenter">
+            <div class="wrapper column start vcenter">
+                <p v-html="section.getTextContent('à propos - contenu principal')"></p>
+                <a class="cta-style-1" :href="section.getCta('about - contact').url" v-html="section.getCta('about - contact').label"></a>
+            </div>
         </div>
     </div>
 </template>
@@ -36,37 +40,20 @@
 
 <style scoped>
     .about-container{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        grid-template-columns: minmax(450px,1fr) 2fr;
     }
 
-    .title-wrapper{
-        display: flex;
-    }
-
-    .title-wrapper h1{
-        font-family: var(--main-font);
-        font-weight: 900;
-        font-size: 3em;
-        margin: 0px;
-    }
-
-    .image-container{
-        z-index: 2;
-        height:700px;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
+    .left-column{
         background: linear-gradient(90deg, var(--secondary-color) 63%, var(--bg-color) 63%);
+        padding: 5rem 0 5rem 0;
+        justify-self: stretch;
+        align-items: stretch;
     }
 
     .svg-wrapper{
         width: 0;
         height: 0;
         overflow: visible;
-        padding-top: 2rem;
         padding-left: 1em;
     }
 
@@ -85,5 +72,9 @@
         font-weight: 400;
         line-height: 3rem;
         letter-spacing: 0.3rem;
+    }
+
+    .wrapper{
+        padding-left: 4rem;
     }
 </style>
