@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="grid">
+  <div id="app" class="grid" :v-if="isLoaded">
     <Header :header-data="headerData" />
     <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
       <template v-if="section.getId() === 'intro'">
@@ -45,6 +45,7 @@
         headerData: ThemeDataCenter.get('header'),
         footerData: ThemeDataCenter.get('footer'),
         sections: this.initSections(),
+        isLoaded: false
       }
     },
 
@@ -60,6 +61,10 @@
         return sections;
       }
     },
+
+    mounted() {
+      this.loaded = true;
+    }
   }
 </script>
 
