@@ -26,6 +26,14 @@
     align-items: flex-end;
 }
 
+.row.stretch{
+    justify-content: stretch;
+}
+
+.row.vstretch{
+    align-items: stretch;
+}
+
 .row.between{
     justify-content: space-between;
 }
@@ -59,11 +67,16 @@
     justify-content: flex-start;
 }
 
-.grid{
-    display:grid;
+.column.stretch{
+    align-items: stretch;
 }
 
-.grid.column-1{
+.column.vstretch{
+    justify-content: stretch;
+}
+
+.grid{
+    display:grid;
     grid-template-columns: 1fr;
 }
 
@@ -72,9 +85,13 @@
 }
 
 .grid > .left-column{
-    grid-column: 1/2;
+    grid-column: left;
 }
 
 .grid > .right-column{
-    grid-column: 2/3;
+    grid-column: right;
+}
+
+.grow{
+    flex-grow: 1;
 }

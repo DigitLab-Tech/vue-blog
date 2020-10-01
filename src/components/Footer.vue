@@ -25,9 +25,11 @@
 
         <div class="social-container">
             <p>Suivez-moi</p>
-            <a class="image-wrapper" v-for="social in data.socials" :key="social.name" :href="social.url" target="_blank">
-                <img :src="social.icon.file.url" draggable="false"/>
-            </a>
+            <div class="row center vcenter">
+                <a class="image-wrapper" v-for="social in data.socials" :key="social.name" :href="social.url" target="_blank">
+                    <img :src="social.icon.file.url" draggable="false"/>
+                </a>
+            </div>
         </div>
     </footer>
 </template>
@@ -119,6 +121,7 @@
     .copyright-container span{
         font-weight: 100;
         letter-spacing: 0.1rem;
+        white-space: nowrap;
     }
 
     .copyright-container a{
@@ -140,15 +143,17 @@
 
     .logo-container img{
         max-height: 8vh;
+        max-width: 75px
     }
 
     .svg-wrapper{
         position: absolute;
         top:-50%;
-        left:49%;
+        left:50%;
+        transform: translateX(-50%);
         max-height: 100px;
         overflow: hidden;
-        width: 100%;
+        width: 16px;
     }
 
     .social-container{
@@ -166,5 +171,32 @@
 
     .image-wrapper{
         padding: 2px;
+    }
+
+    @media (max-width: 991px){
+        .copyright-container span{
+            font-size: 0.7rem;
+            letter-spacing: inherit;
+        }
+        .footer-container{
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .copyright-container{
+            grid-column:1/2;
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        .social-container{
+            grid-column: 2/3;
+            flex-direction: column;
+            padding-top: 1.2rem;
+        }
+
+        .logo-container{
+            grid-column: 1/3;
+            grid-row: 3/4;
+        }
     }
 </style>

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "aos": "^3.0.0-beta.6",
     "axios": "^0.20.0",
     "before-build-webpack": "^0.2.9",
     "contentful": "^7.14.6",

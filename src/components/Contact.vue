@@ -1,19 +1,25 @@
 <template>
-    <div class="contact-container">
-        <div class="info-container">
-            <div class="content-container">
-                <p v-html="section.getTextContent('informations de contact')"></p>
+    <div class="contact-container grid">
+        <div class="left-column">
+            <div class="info-container column vcenter">
+                <div class="content-container">
+                    <p v-html="section.getTextContent('informations de contact')"></p>
+                </div>
             </div>
-            <div class="title-container">
-                <h1>{{section.getTitle()}}</h1>
+        </div>
+        <div class="right-column">
+            <div class="form-container column end">
+                <div class="title-container row center vcenter">
+                    <h1>{{section.getTitle()}}</h1>
+                </div>
+                <Form :form-data="section.getContent('contact')" />
+                <div class="image-container" :style="imageContainerCss">
+
+                </div>
             </div>
         </div>
-        <div class="form-container">
-            <Form :form-data="section.getContent('contact')" />
-        </div>
-        <div class="image-container">
-            <img :src="section.getImageData('salon').url" draggable="false"/>
-        </div>
+
+
     </div>
 </template>
 
@@ -33,55 +39,95 @@
                 section:this.sectionClass
             }
         },
+        computed: {
+            imageContainerCss: function(){
+                return 'background-image: url("'+ this.section.getImageData('salon').url +'")';
+            }
+        }
     }
 </script>
 
 <style scoped>
     .contact-container{
-        display:grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: [left]2fr [right]1fr;
         justify-content: end;
     }
 
+    .title-container{
+        position: absolute;
+        top:14%;
+        right: 50%;
+    }
+
+    .left-column{
+        justify-self: start;
+        align-self: center;
+    }
+
     .info-container{
-        grid-column: 1/2;
-        grid-row: 1/2;
-        display: flex;
         text-align: right;
-        align-items: flex-start;
-        font-family: var(--main-font);
-        font-size: 1.5rem;
-        z-index: 10;
+        transform: translateY(-25%);
+        position: relative;
     }
 
     .form-container{
-        grid-column: 2/3;
-        grid-row: 1/2;
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        z-index: 10;
+        position: relative;
+        padding: 6rem 0;
     }
 
     .image-container{
-        grid-column: 1/3;
-        grid-row: 1/2;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .image-container img{
-        max-height: 75%;
+        position: absolute;
+        background-position: center;
+        background-size: cover;
+        top:50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: -1;
+        width: 80vw;
+        height: 60%;
     }
 
     .content-container{
+        padding: 5rem 4rem 5rem 8rem;
         background-color: var(--secondary-color);
-        padding: 4rem 4rem 4rem 8rem;
     }
 
-    .title-container{
-        transform: translate(-1rem, -1rem);
+    @media (max-width: 576px){
+        div.left-column{
+            grid-row: 2/3;
+        }
+        div.title-container{
+            right: 40%;
+        }
     }
 
+
+    @media (max-width: 991px){
+        p{
+            font-size: 1rem;
+            line-height: 1.4rem;
+        }
+        .contact-container{
+            grid-template-columns: [left right]1fr
+        }
+        .left-column{
+            grid-row: 1/2;
+            align-self: end;
+        }
+        .right-column{
+            grid-row: 1/2;
+        }
+        .title-container{
+            right: 15%;
+        }
+        .image-container{
+            width: 100vw;
+        }
+        .content-container{
+            padding: 3rem 1rem 2rem 1rem;
+        }
+    }
 </style>

@@ -85,7 +85,7 @@ export default {
 
   .main-menu{
     position: absolute;
-    height:180px;
+    height:0px;
     width: 100%;
     top:0;
     left:0;
@@ -100,6 +100,7 @@ export default {
 
   .menu-container.active .main-menu{
     transform: translateY(0);
+    height:180px;
   }
 
   a{

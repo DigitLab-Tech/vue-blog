@@ -1,9 +1,9 @@
 <template>
-    <header>
-        <div class="logo-container" >
-            <div class="logo-wrapper">
+    <header class="row between vcenter" data-aos="fade-down">
+        <div class="logo-container row center vcenter" >
+            <div class="row center vcenter">
                 <img :src="logo.path" draggable="false"/>
-                <div class="div logo-desc">
+                <div class="logo-desc row">
                     <span v-html="logo.desc"></span>
                 </div>
             </div>
@@ -38,35 +38,42 @@
         position: fixed;
         top:0;
         right:0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width:100%;
+        width: 100%;
         z-index: 100;
     }
-    .logo-container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 180px;
-        height: 180px;
-        font-family: var(--main-font);
+
+    span{
         font-weight: 900;
         font-size: 0.8rem;
+    }
+
+    .logo-container{
+        width: 180px;
+        height: 180px;
         background-color: var(--bg-color);
     }
 
-    .logo-wrapper{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .logo-container img{
-        max-width: 80px;
+        max-width: 45%;
     }
 
     .logo-desc{
         transform: translateX(-3px);
+    }
+
+    @media (max-width: 991px){
+        span{
+            font-size: 0.6rem;
+            line-height: 0.7rem;
+        }
+
+        .logo-container{
+            width: 120px;
+            height: 120px;
+        }
+
+        .logo-desc{
+            transform: translateX(-2px);
+        }
     }
 </style>

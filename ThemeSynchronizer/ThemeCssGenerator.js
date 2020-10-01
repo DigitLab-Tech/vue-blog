@@ -5,6 +5,7 @@ module.exports.ThemeCssGenerator = class ThemeCssGenerator{
         this.fonts = [];
         this.variableCssStrings = [];
         this.fontCssStrings = [];
+        this.bgColor = '';
     }
 
     addVariable(name, value){
@@ -17,6 +18,10 @@ module.exports.ThemeCssGenerator = class ThemeCssGenerator{
         }
         this.fonts.push(fontData);
         this.variables.push({name: this._mutateVariableName(cssVarName), value: fontData.name});
+    }
+
+    addBgColor(value){
+        this.bgColor = value;
     }
 
     save(filename, path){
@@ -43,7 +48,7 @@ module.exports.ThemeCssGenerator = class ThemeCssGenerator{
         this.variableCssStrings.forEach(element => {
            str += element;
         });
-        str += '}';
+        str += '}body{background-color:' + this.bgColor + '}';
 
         this.fontCssStrings.forEach(element => {
            str += element;

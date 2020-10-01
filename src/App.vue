@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="grid column-1">
+  <div id="app" class="grid">
     <Header :header-data="headerData" />
     <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
       <template v-if="section.getId() === 'intro'">
@@ -75,9 +75,6 @@
 
   body{
     margin: 0;
-    display: flex;
-    justify-content: stretch;
-    align-items: stretch;
     overflow-x: hidden;
     text-align: left;
   }
@@ -92,11 +89,17 @@
 
   #app{
     gap:10rem;
-    background-color: var(--bg-color);
     font-family: var(--main-font), Helvetica, Arial, sans-serif;
     color: var(--main-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  a.cta-style-1{
+    font-weight: 100;
+    color:var(--main-color);
+    text-transform: uppercase;
+    display: inline-grid;
   }
 
   a.cta-style-1:after{
@@ -107,15 +110,31 @@
     display: block;
   }
 
-  a.cta-style-1{
-    font-weight: 100;
-    color:var(--main-color);
-    text-transform: uppercase;
-    display: inline-grid;
+  a.cta-style-2{
+    position: relative;
+    font-weight: 300;
+    color:var(--bg-color);
+  }
+
+  a.cta-style-2:after{
+    content:'';
+    position: absolute;
+    bottom: -0.2rem;
+    right:-0.5rem;
+    height:1px;
+    width:15%;
+    background-color: var(--bg-color);
+  }
+
+
+  .bg-color{
+    color:var(--bg-color);
   }
 
   @media (max-width: 576px){
-
+#app{
+  gap:3rem;
+}
   }
 
   @media (max-width: 991px){

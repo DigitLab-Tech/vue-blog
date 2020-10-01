@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="left-column column center vcenter">
-            <div class="services-wrapper grid column-2">
+            <div class="services-wrapper grid">
                 <div class="service-wrapper" v-for="service in this.section.getContents()" :key="service.name">
                     <p >{{service.name}}</p>
                 </div>
@@ -52,7 +52,7 @@
 
 <style scoped>
     .services-container{
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: [left]2fr [right]1fr;
         gap: 1rem;
     }
 
@@ -87,6 +87,7 @@
     }
 
     .services-wrapper{
+        grid-template-columns: 1fr 1fr;
         padding: 8rem 0;
         justify-content: start;
     }
@@ -119,5 +120,30 @@
         left:-100vw;
         width: 200vw;
         height: 100%;
+    }
+
+    @media (max-width: 576px){
+        .title-container{
+            transform: translate(0, 5rem);
+        }
+        .services-container{
+            gap: 0;
+        }
+
+        .service-wrapper{
+            transform: translateY(1rem);
+        }
+    }
+
+    @media (max-width: 991px){
+        .services-wrapper{
+            grid-template-columns: 1fr;
+            padding: 8rem 1rem;
+        }
+
+        .service-wrapper{
+            grid-column: 1/2;
+            padding: 0.5rem 0 0.5rem 1rem;
+        }
     }
 </style>

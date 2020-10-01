@@ -1,5 +1,5 @@
 <template>
-    <form :id="data.name">
+    <form class="column" :id="data.name">
         <input v-for="input in data.formFields" :key="input.name" :placeholder="input.label" />
         <button class="btn-primary">Envoyer</button>
     </form>
@@ -29,10 +29,9 @@
 
 <style scoped>
     form{
-        display: flex;
-        flex-direction: column;
         background: linear-gradient(90deg, rgba(0,0,0,0) 33%, var(--secondary-color) 33%);
         padding: 4rem 0.5rem;
+        width: 100%;
     }
 
     textarea:focus, input:focus{
@@ -67,5 +66,11 @@
         align-self: flex-end;
         margin-top: 3.5rem;
         cursor: pointer;
+    }
+
+    @media (max-width: 991px){
+        form{
+            max-width: 350px;
+        }
     }
 </style>

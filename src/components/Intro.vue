@@ -1,36 +1,27 @@
 <template>
-    <div class="intro-container">
-        <div class="slogan-container">
-            <div class="slogan-wrapper">
-                <h1 v-html="section.getTextContent('slogan')"></h1>
-                <div class="to-service-container">
+    <div class="intro-container grid">
+        <div class="left-container row stretch vstretch">
+            <div class="column start vcenter">
+                <h1 v-html="section.getTextContent('slogan')" data-aos="fade-down-right" data-aos-delay="200"></h1>
+                <div class="to-service-wrapper" data-aos="fade-up" data-aos-delay="300">
                     <a class="cta-style-1" :href="section.getCta('intro - services').url" v-html="section.getCta('intro - services').label"></a>
                 </div>
             </div>
-
         </div>
-        <div class="banner-container">
-            <div class="image-container" :style="imageContainerCss">
-
-            </div>
-        </div>
-
-        <div class="image-footer-container">
-            <div class="text-container">
-                <div class="wrapper">
-                    <h2 v-html="section.getTextContent('description image introduction')"></h2>
-                    <div class="to-realisation-container">
-                        <a :href="section.getCta('intro to realisation').url" v-html="section.getCta('intro to realisation').label"></a>
-                    </div>
+        <div class="right-container column stretch" data-aos="fade-up-left">
+            <div class="image-container" :style="imageContainerCss"></div>
+            <div class="content-container row stretch">
+                <div class="column start vcenter grow">
+                    <h2 class="bg-color" v-html="section.getTextContent('description image introduction')"></h2>
+                    <a class="cta-style-2" :href="section.getCta('intro to realisation').url" v-html="section.getCta('intro to realisation').label"></a>
                 </div>
-            </div>
-
-            <div class="svg-wrapper">
-                <svg width="228" height="165" viewBox="0 0 228 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M100 0H125L25 165.5H0L100 0Z" fill="#262626"/>
-                    <path d="M150 0H175L75 165.5H50L150 0Z" fill="#262626"/>
-                    <path d="M203 0H228L128 165.5H103L203 0Z" fill="#262626"/>
-                </svg>
+                <div class="svg-wrapper">
+                    <svg width="228" height="165" viewBox="0 0 228 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 0H125L25 165.5H0L100 0Z" fill="#262626"/>
+                        <path d="M150 0H175L75 165.5H50L150 0Z" fill="#262626"/>
+                        <path d="M203 0H228L128 165.5H103L203 0Z" fill="#262626"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
@@ -57,120 +48,85 @@
 </script>
 
 <style scoped>
-    .intro-container{
-        display: grid;
-        grid-template-columns: 75px [slogan]400px  [image]1fr;
-        width: 100%;
-    }
-
-    .slogan-container{
-        display: flex;
-        flex-direction: column;
-        grid-column: slogan;
-        align-self: stretch;
-        justify-content: center;
-        transform: translateX(125px);
-        z-index: 10;
-    }
-
-    .slogan-wrapper{
-        height: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .slogan-wrapper h1{
+    h1{
         font-size: 3rem;
     }
 
-    .banner-container{
-        display: flex;
-        grid-column: image;
-        flex-direction: column;
-        align-items: flex-end;
+    .intro-container{
+        grid-template-columns: 75px [left]400px  [right]1fr;
     }
 
-    .to-service-container{
-        display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-        transform: translateY(75px);
-        transform: translateY(75px);
-    }
-
-    .to-realisation-container{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .to-realisation-container a{
-        font-weight: 300;
-        font-size: 1.2rem;
-        color:var(--bg-color);
-    }
-
-    .to-realisation-container:after{
-        content:'';
-        height:1px;
-        width:15%;
-        background-color: var(--bg-color);
-        align-self: flex-end;
-        transform: translate(5px,2px);
-    }
-
-    .image-container{
-        width: 100%;
-        height:calc(100vh - 160px);
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        z-index: 5;
-        display: flex;
-        align-items: flex-end;
-    }
-
-    .image-footer-container{
-        grid-column: image;
-        height: 160px;
-        background-color: var(--main-color);
-        width:100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .text-container{
-        color:var(--bg-color);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+    .left-container{
+        grid-column: left;
+        align-self: stretch;
         justify-content: center;
+        transform: translateX(125px);
     }
 
-    .text-container .wrapper{
-        padding-left:4rem;
+    .right-container{
+        grid-column: right;
+        justify-content: stretch;
+        align-items: stretch;
+    }
+
+    .content-container{
+        height:160px;
+        padding-left: 3rem;
+        background-color: var(--main-color);
+    }
+
+    .to-service-wrapper{
+        padding:6rem 0;
     }
 
     .svg-wrapper{
         padding-right: 1rem;
+    }
 
+    .image-container{
+        height:calc(100vh - 160px);
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
     }
 
     .image-container:after{
         content:'';
+        display: flex;
         background-color: rgba(0,0,0,0.25);
-        position: absolute;
         width: 100%;
         height: 100%;
-        top:0;
-        left: 0;
     }
 
     h2{
         font-family: var(--main-font);
         font-weight: 500;
         font-size: 1.2rem;
+    }
+
+    @media (max-width: 576px){
+        .left-container{
+            transform: translateX(0);
+            justify-self: center;
+        }
+        .content-container{
+            padding-left: 1rem;
+        }
+        .svg-wrapper{
+            padding-right: 0rem;
+        }
+    }
+
+    @media (max-width: 991px){
+        .intro-container{
+            grid-template-columns: [left right]1fr;
+        }
+        .cta-style-1{
+            display: none;
+        }
+        .left-container,
+        .right-container{
+            grid-row: 1/2;
+        }
     }
 </style>

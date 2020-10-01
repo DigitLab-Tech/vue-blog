@@ -46,6 +46,7 @@ module.exports.ThemeSynchronizer = class ThemeSynchronizer{
                 themeCssGenerator.addFont(configs[element], element);
             }
         });
+        themeCssGenerator.addBgColor(configs.bgColor);
 
         themeCssGenerator.save('theme.css', this.assetPath);
         ThemeAssetUploader.save(ThemeAssetExtractor.getAssetUrls(configs), this.assetPath);
