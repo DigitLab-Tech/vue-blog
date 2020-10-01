@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="grid">
+  <div id="app" :class="'grid ' + css" data-aos="fade" data-aos-id="app">
     <Header :header-data="headerData" />
     <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
       <template v-if="section.getId() === 'intro'">
@@ -44,7 +44,14 @@
       return{
         headerData: ThemeDataCenter.get('header'),
         footerData: ThemeDataCenter.get('footer'),
-        sections: this.initSections()
+        sections: this.initSections(),
+        loaded: false
+      }
+    },
+
+    computed:{
+      css: function () {
+        return this.loaded ? 'loaded' : '';
       }
     },
 
@@ -62,7 +69,9 @@
     },
 
     created(){
-
+      document.addEventListener('aos:in:app', () => {
+        this.loaded = true;
+      });
     }
   }
 </script>
@@ -93,6 +102,11 @@
     color: var(--main-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+  }
+
+  #app.loaded{
+    opacity: 1;
   }
 
   a.cta-style-1{
