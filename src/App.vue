@@ -1,21 +1,23 @@
 <template>
-  <div id="app" class="grid" :v-if="isLoaded">
-    <Header :header-data="headerData" />
-    <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
-      <template v-if="section.getId() === 'intro'">
-        <Intro :section-class="section" />
-      </template>
-      <template v-if="section.getId() === 'apropos'">
-        <About :section-class="section" />
-      </template>
-      <template v-if="section.getId() === 'services'">
-        <Services :section-class="section" />
-      </template>
-      <template v-if="section.getId() === 'contact'">
-        <Contact :section-class="section" />
-      </template>
-    </section>
-    <Footer :footer-data="footerData" />
+  <div v-cloak>
+    <div id="app" class="grid">
+      <Header :header-data="headerData" />
+      <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
+        <template v-if="section.getId() === 'intro'">
+          <Intro :section-class="section" />
+        </template>
+        <template v-if="section.getId() === 'apropos'">
+          <About :section-class="section" />
+        </template>
+        <template v-if="section.getId() === 'services'">
+          <Services :section-class="section" />
+        </template>
+        <template v-if="section.getId() === 'contact'">
+          <Contact :section-class="section" />
+        </template>
+      </section>
+      <Footer :footer-data="footerData" />
+    </div>
   </div>
 </template>
 
@@ -45,7 +47,6 @@
         headerData: ThemeDataCenter.get('header'),
         footerData: ThemeDataCenter.get('footer'),
         sections: this.initSections(),
-        isLoaded: false
       }
     },
 
@@ -61,10 +62,6 @@
         return sections;
       }
     },
-
-    mounted() {
-      this.loaded = true;
-    }
   }
 </script>
 
