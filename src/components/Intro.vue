@@ -10,7 +10,7 @@
         </div>
         <div class="right-container column stretch">
             <div class="image-container" :style="imageContainerCss" data-aos="fade-up-left"></div>
-            <div class="content-container row stretch" data-aos="zoom-in-up">
+            <div class="content-container row stretch" data-aos="zoom-in-up" data-aos-anchor=".intro-container">
                 <div class="column start vcenter grow">
                     <h2 class="bg-color" v-html="section.getTextContent('description image introduction')"></h2>
                     <a class="cta-style-2" :href="section.getCta('intro to realisation').url" v-html="section.getCta('intro to realisation').label"></a>

@@ -4,14 +4,14 @@
             <div class="title-wrapper row end vcenter">
                 <h1 data-aos="zoom-in-up" data-aos-delay="200">{{section.getTitle()}}</h1>
             </div>
-            <div class="image-wrapper" data-aos="fade-up-left" data-aos-delay="100">
+            <div id="about-anchor" class="image-wrapper" data-aos="fade-up-left" data-aos-delay="100">
                 <img :src="section.getImageData('girl taking notes').url" draggable="false" />
             </div>
         </div>
         <div class="right-column row vcenter" >
             <div class="wrapper column start vcenter">
-                <p v-html="section.getTextContent('à propos - contenu principal')" data-aos="fade-down" data-aos-delay="200"></p>
-                <div class="cta-wrapper" data-aos="fade-up-left" data-aos-delay="200">
+                <p v-html="section.getTextContent('à propos - contenu principal')" data-aos="fade-down" data-aos-delay="200" data-aos-anchor="#about-anchor"></p>
+                <div class="cta-wrapper" data-aos="fade-up-left" data-aos-delay="200" data-aos-anchor="#about-anchor">
                     <a class="cta-style-1" :href="section.getCta('about - contact').url" v-html="section.getCta('about - contact').label"></a>
                 </div>
             </div>
