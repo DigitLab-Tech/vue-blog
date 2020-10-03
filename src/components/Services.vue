@@ -1,22 +1,22 @@
 <template>
     <div class="services-container grid">
-        <div class="title-container row">
+        <div class="title-container row" data-aos="fade-down-right">
             <div class="title-wrapper">
                 <h1>{{section.getTitle()}}</h1>
             </div>
         </div>
         <div class="left-column column center vcenter">
-            <div class="services-wrapper grid">
+            <div class="services-wrapper grid" data-aos="zoom-in-up">
                 <div class="service-wrapper" v-for="service in this.section.getContents()" :key="service.name">
                     <p >{{service.name}}</p>
                 </div>
-                <div class="to-contact-cta">
+                <div class="to-contact-cta" data-aos="fade-right" data-aos-delay="100">
                     <a class="cta-style-1" :href="section.getCta('service - contact').url" >{{section.getCta('service - contact').label}}</a>
                 </div>
             </div>
         </div>
         <div class="right-column">
-            <div class="image-container" :style="imageContainerCss">
+            <div class="image-container" :style="imageContainerCss" data-aos="fade-left">
             </div>
         </div>
     </div>
@@ -66,6 +66,10 @@
         z-index: 20;
     }
 
+    .title-container[data-aos^=fade][data-aos^=fade].aos-animate{
+        transform: translate(-5rem, 5rem);
+    }
+
     .title-wrapper{
         background-color: var(--secondary-color);
         width: 100%;
@@ -105,7 +109,7 @@
         display: flex;
         padding: 15% 0 6% 0;
         grid-column: 1/3;
-        transform: translateY(3rem);
+        margin-top: 3rem;
     }
 
     .to-contact-cta a{
@@ -126,6 +130,11 @@
         .title-container{
             transform: translate(0, 5rem);
         }
+
+        .title-container[data-aos^=fade][data-aos^=fade].aos-animate{
+            transform: translate(0, 5rem);
+        }
+
         .services-container{
             gap: 0;
         }

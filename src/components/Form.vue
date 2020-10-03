@@ -68,6 +68,12 @@
         cursor: pointer;
     }
 
+    @media (max-width: 576px){
+        form{
+            padding: 4rem 0.3rem 4rem 0rem;
+        }
+    }
+
     @media (max-width: 991px){
         form{
             max-width: 350px;

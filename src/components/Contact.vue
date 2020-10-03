@@ -1,19 +1,19 @@
 <template>
     <div class="contact-container grid">
         <div class="left-column">
-            <div class="info-container column vcenter">
-                <div class="content-container">
+            <div class="info-container column vcenter" >
+                <div class="content-container" data-aos="fade-up-right">
                     <p v-html="section.getTextContent('informations de contact')"></p>
                 </div>
             </div>
         </div>
         <div class="right-column">
-            <div class="form-container column end">
-                <div class="title-container row center vcenter">
+            <div class="form-container column end" >
+                <div class="title-container row center vcenter" data-aos="fade-down-left">
                     <h1>{{section.getTitle()}}</h1>
                 </div>
-                <Form :form-data="section.getContent('contact')" />
-                <div class="image-container" :style="imageContainerCss">
+                <Form :form-data="section.getContent('contact')" data-aos="fade-down-left" />
+                <div class="image-container" :style="imageContainerCss" data-aos="fade" data-aos-delay="150" data-aos-anchor=".contact-container">
 
                 </div>
             </div>
@@ -57,6 +57,7 @@
         position: absolute;
         top:14%;
         right: 50%;
+        z-index: 10;
     }
 
     .left-column{
@@ -88,6 +89,10 @@
         z-index: -1;
         width: 80vw;
         height: 60%;
+    }
+
+    .image-container[data-aos^=fade][data-aos^=fade].aos-animate{
+        transform: translateY(-50%);
     }
 
     .content-container{

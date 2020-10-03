@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer-container">
+    <footer class="footer-container" data-aos="fade-up">
         <div class="image-container" :style="imageContainerCss">
 
         </div>
@@ -96,7 +96,7 @@
         position: absolute;
         width: 33%;
         height: 20%;
-        top:-3rem;
+        top:-12%;
         left: 15%;
     }
 
@@ -173,9 +173,20 @@
         padding: 2px;
     }
 
+    @media (max-width: 576px){
+        .social-container p{
+            font-size: 1.2rem;
+        }
+    }
+
     @media (max-width: 991px){
+        .copyright-container a{
+            font-size: 0.8rem;
+            line-height: 1.6rem;
+        }
+
         .copyright-container span{
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             letter-spacing: inherit;
         }
         .footer-container{
@@ -197,6 +208,12 @@
         .logo-container{
             grid-column: 1/3;
             grid-row: 3/4;
+            padding: 1rem 0 1rem 0;
         }
+
+        .svg-wrapper{
+            top:-90%;
+        }
+
     }
 </style>

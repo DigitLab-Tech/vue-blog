@@ -2,15 +2,15 @@
     <div class="intro-container grid">
         <div class="left-container row stretch vstretch">
             <div class="column start vcenter">
-                <h1 v-html="section.getTextContent('slogan')" data-aos="fade-down-right" data-aos-delay="200"></h1>
+                <h1 v-html="section.getTextContent('slogan')" data-aos="fade-down-right" data-aos-delay="175"></h1>
                 <div class="to-service-wrapper" data-aos="fade-up" data-aos-delay="300">
                     <a class="cta-style-1" :href="section.getCta('intro - services').url" v-html="section.getCta('intro - services').label"></a>
                 </div>
             </div>
         </div>
-        <div class="right-container column stretch" data-aos="fade-up-left">
-            <div class="image-container" :style="imageContainerCss"></div>
-            <div class="content-container row stretch">
+        <div class="right-container column stretch">
+            <div class="image-container" :style="imageContainerCss" data-aos="fade-up-left"></div>
+            <div class="content-container row stretch" data-aos="zoom-in-up">
                 <div class="column start vcenter grow">
                     <h2 class="bg-color" v-html="section.getTextContent('description image introduction')"></h2>
                     <a class="cta-style-2" :href="section.getCta('intro to realisation').url" v-html="section.getCta('intro to realisation').label"></a>
@@ -105,9 +105,12 @@
     }
 
     @media (max-width: 576px){
+        h1{
+            font-size: 2.5rem;
+        }
         .left-container{
-            transform: translateX(0);
-            justify-self: center;
+            transform: translateX(1rem);
+            justify-self: start;
         }
         .content-container{
             padding-left: 1rem;
