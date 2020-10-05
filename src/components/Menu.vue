@@ -2,8 +2,8 @@
   <div :class="'menu-container ' + menuCssClass" >
     <nav class="main-menu">
       <div class="links-wrapper">
-        <div v-for="link in menuData.links" :key="link.name">
-          <a :href="link.url">{{link.name}}</a>
+        <div class="link-container" v-for="link in menuData.links" :key="link.name">
+          <a :href="link.url">{{link.label}}</a>
         </div>
       </div>
     </nav>
@@ -52,6 +52,19 @@ export default {
     width:65px;
     height: 65px;
     cursor: pointer;
+  }
+
+  .links-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: calc(97px + 1rem);
+    width: 100%;
+  }
+
+  .link-container{
+    padding: 0.5rem;
   }
 
   .toggle-line{
@@ -109,5 +122,32 @@ export default {
     text-decoration: none;
     font-family: var(--main-font);
     font-weight: 600;
+  }
+
+  @media (max-width: 991px){
+    .main-menu{
+      height:100%;
+      width: 200px;
+      top:0;
+      left: unset;
+      right:0;
+      transform: translateX(200px);
+    }
+
+    .menu-container.active .main-menu{
+      height: 100vh;
+
+    }
+
+    .links-wrapper{
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: calc(180px + 1rem);
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>
