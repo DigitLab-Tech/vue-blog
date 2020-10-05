@@ -19,7 +19,7 @@ export default class Field{
     }
 
     getRdnName(){
-        return (Math.floor(Math.random() * 100000) + 1) + '-' + (Math.floor(Math.random() * 100000) + 1);
+        return this.name.length + '-' + this.getName();
     }
 
     getError(){
