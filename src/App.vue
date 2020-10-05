@@ -98,6 +98,7 @@
     color:var(--main-color);
     text-transform: uppercase;
     display: inline-grid;
+    transition: text-shadow 0.3s ease;
   }
 
   a.cta-style-1:after{
@@ -106,22 +107,44 @@
     border: 1px solid var(--main-color);
     margin-top: 4px;
     display: block;
+    transition: all 0.3s ease;
+  }
+
+  a.cta-style-1:hover{
+    text-shadow: 0 0 0 var(--main-color);
+  }
+
+  a.cta-style-1:hover:after{
+    background-color: var(--main-color);
+    transform: scale(1.02);
   }
 
   a.cta-style-2{
     position: relative;
     font-weight: 300;
     color:var(--bg-color);
+    transition: text-shadow 0.3s ease;
+    padding: 0.3rem 0 0.3rem 0;
   }
 
   a.cta-style-2:after{
     content:'';
     position: absolute;
-    bottom: -0.2rem;
+    bottom: 0;
     right:-0.5rem;
     height:1px;
     width:15%;
     background-color: var(--bg-color);
+    transition: width 0.3s ease;
+  }
+
+  a.cta-style-2:hover{
+    text-shadow: 0 0 0 var(--bg-color);
+  }
+
+
+  a.cta-style-2:hover:after{
+    width:50%;
   }
 
 

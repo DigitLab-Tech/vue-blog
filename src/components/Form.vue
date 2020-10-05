@@ -1,28 +1,37 @@
+<!--suppress CssInvalidPseudoSelector -->
 <template>
-    <form class="column" :id="data.name">
-        <input v-for="input in data.formFields" :key="input.name" :placeholder="input.label" />
+    <form class="column" :id="form.name" :name="form.name" data-netlify="true" data-netlify-honeypot="bot-field" v-on:submit.prevent="form.submit">
+        <div class="input-container" v-for="field in form.fields" :key="field.getName()">
+            <input autocomplete="no" :name="field.getRdnName()" :placeholder="field.getPlaceHolder()" v-model="field.value" />
+            <div class="error-container"><span>{{field.getError()}}</span></div>
+        </div>
+
+        <input name="form-name" type="hidden" :value="form.name" />
         <button class="btn-primary">Envoyer</button>
     </form>
 </template>
 
 <script>
+    import Form from "App/model/form/Form";
+
     export default {
         name: 'Form',
         props:{
             formData:Object
         },
+
         data(){
             return{
-                data:this.formData
+                form: new Form(this.formData)
             }
         },
 
-        computed: {
+        methods: {
 
         },
 
         mounted() {
-            console.log(this.data);
+
         }
     }
 </script>
@@ -53,6 +62,16 @@
 
     input::placeholder{
         color: var(--main-color);
+    }
+
+    .input-container{
+        position: relative;
+    }
+
+    .error-container{
+        position: absolute;
+        right:0;
+        bottom:-1.5rem;
     }
 
     .btn-primary{

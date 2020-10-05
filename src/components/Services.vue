@@ -132,7 +132,7 @@
         }
 
         .title-container[data-aos^=fade][data-aos^=fade].aos-animate{
-            transform: translate(0, 5rem);
+            transform: translate(2rem, 5rem);
         }
 
         .services-container{
