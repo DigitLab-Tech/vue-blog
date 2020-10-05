@@ -16,6 +16,7 @@
     "emailjs": "^3.3.0",
     "generate-json-webpack-plugin": "^1.0.0",
     "http": "0.0.1-security",
+    "nprogresse": "^0.2.3",
     "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.6.11",
     "xmlhttprequest": "^1.8.0"
