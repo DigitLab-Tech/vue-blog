@@ -1,5 +1,5 @@
 import Field from 'App/model/form/Field'
-import Axios from "axios";
+import axios from "axios";
 export default class Form{
     constructor(data){
         this.fields = [];
@@ -16,16 +16,27 @@ export default class Form{
     }
 
     _serialize(){
-        let data = '';
+        let data = encodeURIComponent('form-name') + '=' + encodeURIComponent(this.name);
         this.fields.forEach(field => {
-            data += '&' + field.getName() +'='+encodeURIComponent(field.value);
+            data += '&' + encodeURIComponent(field.getName()) +'='+encodeURIComponent(field.value);
         });
         return data;
     }
 
     submit(){
         if(this._isValid()){
-            Axios.post('/', this._serialize()).then(data => console.log(data));
+            const axiosConfig = {
+                header: { "Content-Type": "application/x-www-form-urlencoded" }
+            };
+            axios.post(
+                "/",
+                this._serialize(),
+                axiosConfig
+            ).then(data =>{
+                console.log(data);
+            }).catch(error => {
+                console.log(error);
+            });
         }
     }
 
