@@ -18,10 +18,6 @@ export default class Field{
         return this.name.toLowerCase();
     }
 
-    getRdnName(){
-        return this.name.length + '-' + this.getName();
-    }
-
     getError(){
         if(this.hasError()){
             return this.errors[0];

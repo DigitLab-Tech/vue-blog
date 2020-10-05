@@ -2,7 +2,7 @@
 <template>
     <form class="column" :id="form.name" :name="form.name" data-netlify="true" data-netlify-honeypot="bot-field" v-on:submit.prevent="form.submit">
         <div class="input-container" v-for="field in form.fields" :key="field.getName()">
-            <input autocomplete="no" :name="field.getRdnName()" :placeholder="field.getPlaceHolder()" v-model="field.value" />
+            <input autocomplete="no" :name="field.getName()" :placeholder="field.getPlaceHolder()" v-model="field.value" />
             <div class="error-container"><span>{{field.getError()}}</span></div>
         </div>
 
@@ -56,7 +56,6 @@
         font-family: var(--main-font);
         color: var(--main-color);
         font-size: 1.8rem;
-        padding-top: 3.5rem;
         font-weight: 300;
     }
 
@@ -66,6 +65,7 @@
 
     .input-container{
         position: relative;
+        padding-top: 3.5rem;
     }
 
     .error-container{
@@ -86,6 +86,16 @@
         margin-top: 3.5rem;
         cursor: pointer;
     }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+        background-color: transparent;
+    }
+
+    input:-internal-autofill-selected {
+        background-color: rgba(232, 240, 254,0) !important;
+    }
+
 
     @media (max-width: 576px){
         form{
