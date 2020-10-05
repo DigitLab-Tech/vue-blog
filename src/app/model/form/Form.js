@@ -18,7 +18,7 @@ export default class Form{
     _serialize(){
         let data = encodeURIComponent('form-name') + '=' + encodeURIComponent(this.name);
         this.fields.forEach(field => {
-            data += '&' + encodeURIComponent(field.getName()) +'='+encodeURIComponent(field.value);
+            data += '&' + encodeURIComponent(field.getRdnName()) +'='+encodeURIComponent(field.value);
         });
         return data;
     }
