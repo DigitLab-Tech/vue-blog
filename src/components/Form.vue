@@ -2,7 +2,7 @@
 <template>
     <form class="column" :id="form.name" :name="form.name" data-netlify="true" data-netlify-honeypot="bot-field" v-on:submit.prevent="form.submit">
         <div class="input-container" v-for="field in form.fields" :key="field.getName()">
-            <input autocomplete="no" :name="field.getRdnName()" :placeholder="field.getPlaceHolder()" v-model="field.value" />
+            <input autocomplete="no" :name="field.getName()" :placeholder="field.getPlaceHolder()" v-model="field.value" />
             <div class="error-container"><span>{{field.getError()}}</span></div>
         </div>
 
