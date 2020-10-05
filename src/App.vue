@@ -1,5 +1,4 @@
 <template>
-  <div v-cloak>
     <div id="app" class="grid">
       <Header :header-data="headerData" />
       <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
@@ -18,7 +17,6 @@
       </section>
       <Footer :footer-data="footerData" />
     </div>
-  </div>
 </template>
 
 <script>
@@ -91,6 +89,10 @@
     color: var(--main-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  #app.grid{
+    display: grid;
   }
 
   a.cta-style-1{
