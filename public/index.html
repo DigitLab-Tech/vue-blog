@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Sylvie Dubois Design</title>
-    <style>[v-cloak]{display: none}body{background-color: #262626}</style>
+    <style>
+      [v-cloak]{display: none}
+      body{background-color: #262626}
+      [data-aos] {
+        visibility: hidden;
+      }
+      [data-aos].aos-animate {
+        visibility:visible;
+      }
+    </style>
   </head>
   <body>
     <noscript>
