@@ -48,7 +48,7 @@ module.exports.ThemeCssGenerator = class ThemeCssGenerator{
         this.variableCssStrings.forEach(element => {
            str += element;
         });
-        str += '}body{background-color:' + this.bgColor + '}';
+        str += '}body{background-color:' + this.bgColor + '!important}';
 
         this.fontCssStrings.forEach(element => {
            str += element;

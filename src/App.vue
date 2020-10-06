@@ -1,21 +1,25 @@
 <template>
-    <div id="app" class="grid">
-      <Header :header-data="headerData" />
-      <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
-        <template v-if="section.getId() === 'intro'">
-          <Intro :section-class="section" />
-        </template>
-        <template v-if="section.getId() === 'apropos'">
-          <About :section-class="section" />
-        </template>
-        <template v-if="section.getId() === 'services'">
-          <Services :section-class="section" />
-        </template>
-        <template v-if="section.getId() === 'contact'">
-          <Contact :section-class="section" />
-        </template>
-      </section>
-      <Footer :footer-data="footerData" />
+    <div id="app">
+      <div v-cloak class="grid">
+        <Header :header-data="headerData" />
+        <section v-for="section in sections" :key="section.getId()" :id="section.getId()">
+          <template v-if="section.getId() === 'intro'">
+            <Intro :section-class="section" />
+          </template>
+          <template v-if="section.getId() === 'apropos'">
+            <About :section-class="section" />
+          </template>
+          <template v-if="section.getId() === 'services'">
+            <Services :section-class="section" />
+          </template>
+          <template v-if="section.getId() === 'contact'">
+            <Contact :section-class="section" />
+          </template>
+        </section>
+        <Footer :footer-data="footerData" />
+      </div>
+      <div class="not-loaded" v-if="!sections"></div>
+
     </div>
 </template>
 
@@ -84,15 +88,15 @@
   }
 
   #app{
-    gap:10rem;
     font-family: var(--main-font), Helvetica, Arial, sans-serif;
     color: var(--main-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  #app.grid{
+  #app > div{
     display: grid;
+    gap:10rem;
   }
 
   a.cta-style-1{
@@ -154,10 +158,20 @@
     color:var(--bg-color);
   }
 
+  .not-loaded{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
   @media (max-width: 576px){
-#app{
-  gap:3rem;
-}
+    #app > div{
+      gap:3rem;
+    }
   }
 
   @media (max-width: 991px){
