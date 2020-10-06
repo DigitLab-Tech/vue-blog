@@ -3,12 +3,10 @@ import axios from "axios";
 export default class Form{
     constructor(data){
         this.fields = [];
-        this._init(data);
-    }
-
-    _init(data) {
-        this.name = data.name;
         this.id = data.name;
+        this.name = data.name;
+        this.msg = '';
+        this.honeypot = this.name;
 
         data.formFields.forEach(element => {
             this.fields.push(new Field(element));
@@ -16,7 +14,7 @@ export default class Form{
     }
 
     _serialize(){
-        let data = encodeURIComponent('form-name') + '=' + encodeURIComponent(this.name);
+        let data = encodeURIComponent('form-name') + '=' + encodeURIComponent(this.honeypot);
         this.fields.forEach(field => {
             data += '&' + encodeURIComponent(field.getName()) +'='+encodeURIComponent(field.value);
         });
@@ -32,12 +30,20 @@ export default class Form{
                 "/",
                 this._serialize(),
                 axiosConfig
-            ).then(data =>{
-                console.log(data);
-            }).catch(error => {
-                console.log(error);
+            ).then(() => {
+                this._reset();
+                this.msg = 'Merci de votre intéret, je vous contacterai bientot.';
+            }).catch(() => {
+                this._reset();
+                this.msg = 'Une erreur s\'est produite. Veuillez réesseyer plus tard.';
             });
         }
+    }
+
+    _reset(){
+        this.fields.forEach(element => {
+           element.value = '';
+        });
     }
 
     _isValid(){
