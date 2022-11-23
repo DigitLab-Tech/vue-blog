@@ -51,7 +51,7 @@
     }
 
     .logo-container img{
-        max-width: 45%;
+        max-width: 95%;
     }
 
     .logo-desc{
