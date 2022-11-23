@@ -3,9 +3,6 @@
         <div class="logo-container row center vcenter" >
             <div class="row center vcenter">
                 <img :src="logo.path" draggable="false"/>
-                <div class="logo-desc row">
-                    <span v-html="logo.desc"></span>
-                </div>
             </div>
         </div>
         <Menu :menu-data="menuData" />
@@ -23,7 +20,7 @@
         },
         data(){
           return {
-              logo: {path : '/' + this.headerData.logo.file.fileName, desc : this.headerData.logo.description.replace(/(\r\n|\n|\r|\s)/gm, ' <br/> ')},
+              logo: {path : '/' + this.headerData.logo.file.fileName},
               menuData: this.headerData.menu
           }
         },
