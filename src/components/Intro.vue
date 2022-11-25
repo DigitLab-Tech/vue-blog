@@ -1,6 +1,7 @@
 <template>
     <div class="intro-container grid">
         <div class="left-container row stretch vstretch">
+            <div class="flower-container" :style="flowerContainerCss"></div>
             <div class="column start vcenter">
                 <h1 v-html="section.getTextContent('slogan')" data-aos="fade-down-right" data-aos-delay="175"></h1>
                 <div class="to-service-wrapper" data-aos="fade-up" data-aos-delay="300">
@@ -35,6 +36,10 @@
         computed: {
            imageContainerCss: function(){
                 return 'background-image: url("'+ this.section.getImageData('intro').url +'")';
+           },
+
+           flowerContainerCss: function(){
+                return 'background-image: url("'+ this.section.getImageData('flower').url +'")';
            }
         }
     }
@@ -89,6 +94,13 @@
         background-color: rgba(0,0,0,0.25);
         width: 100%;
         height: 100%;
+    }
+
+    .flower-container{
+        height:calc(100vh - 160px);
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
     }
 
     h2{
