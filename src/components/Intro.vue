@@ -1,7 +1,6 @@
 <template>
     <div class="intro-container grid">
         <div class="left-container row stretch vstretch">
-            <div class="flower-container" :style="flowerContainerCss"></div>
             <div class="column start vcenter">
                 <h1 v-html="section.getTextContent('slogan')" data-aos="fade-down-right" data-aos-delay="175"></h1>
                 <div class="to-service-wrapper" data-aos="fade-up" data-aos-delay="300">
@@ -18,6 +17,7 @@
                 </div>
             </div>
         </div>
+        <div class="flower-container" :style="flowerContainerCss"></div>
     </div>
 </template>
 
@@ -97,10 +97,11 @@
     }
 
     .flower-container{
-        height:calc(100vh - 160px);
+        height:100vh;
         background-size: cover;
         background-position: center;
         z-index: -1;
+        width: 45vw;
     }
 
     h2{
