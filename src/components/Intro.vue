@@ -53,7 +53,7 @@
         grid-column: left;
         align-self: stretch;
         justify-content: center;
-        transform: translateX(140px);
+        transform: translateX(145px);
     }
 
     .right-container{
