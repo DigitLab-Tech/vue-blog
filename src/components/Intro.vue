@@ -15,13 +15,6 @@
                     <h2 class="bg-color" v-html="section.getTextContent('description image introduction')"></h2>
                     <a class="cta-style-2" :href="section.getCta('intro to realisation').url" v-html="section.getCta('intro to realisation').label"></a>
                 </div>
-                <div class="svg-wrapper">
-                    <svg width="228" height="165" viewBox="0 0 228 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M100 0H125L25 165.5H0L100 0Z" fill="#262626"/>
-                        <path d="M150 0H175L75 165.5H50L150 0Z" fill="#262626"/>
-                        <path d="M203 0H228L128 165.5H103L203 0Z" fill="#262626"/>
-                    </svg>
-                </div>
             </div>
         </div>
     </div>
@@ -60,7 +53,7 @@
         grid-column: left;
         align-self: stretch;
         justify-content: center;
-        transform: translateX(125px);
+        transform: translateX(140px);
     }
 
     .right-container{

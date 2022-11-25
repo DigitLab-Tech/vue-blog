@@ -45,17 +45,13 @@
     }
 
     .logo-container{
-        width: 180px;
+        width: 220px;
         height: 180px;
         background-color: var(--bg-color);
     }
 
     .logo-container img{
         max-width: 95%;
-    }
-
-    .logo-desc{
-        transform: translateX(-3px);
     }
 
     @media (max-width: 991px){
@@ -67,10 +63,6 @@
         .logo-container{
             width: 120px;
             height: 120px;
-        }
-
-        .logo-desc{
-            transform: translateX(-2px);
         }
     }
 </style>

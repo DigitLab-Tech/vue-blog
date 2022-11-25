@@ -143,7 +143,7 @@
 
     .logo-container img{
         max-height: 8vh;
-        max-width: 75px
+        max-width: 115px
     }
 
     .svg-wrapper{
