@@ -100,7 +100,7 @@
         display: flex;
         flex-direction: column;
         border-left: 6px solid var(--main-color);
-        padding-left: 1rem;
+        padding: 0 1rem 0 1rem;
         white-space: nowrap;
     }
 

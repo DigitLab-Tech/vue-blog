@@ -91,6 +91,14 @@
         height: 60%;
     }
 
+    .image-container:after{
+        content:'';
+        display: flex;
+        background-color: rgba(0,0,0,0.25);
+        width: 100%;
+        height: 100%;
+    }
+
     .image-container[data-aos^=fade][data-aos^=fade].aos-animate{
         transform: translateY(-50%);
     }
