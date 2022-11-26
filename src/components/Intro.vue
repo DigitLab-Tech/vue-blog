@@ -101,8 +101,9 @@
         background-size: cover;
         background-position: center;
         z-index: -1;
-        width: 45vw;
+        width: 120%;
         position: absolute;
+        left:-220px;
     }
 
     h2{
